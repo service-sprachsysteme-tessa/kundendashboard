@@ -43,7 +43,6 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
 import Link from "next/link"
 
-
 // Sample data
 const metricsData = [
   { label: "Total Workflows", value: "237", change: "+12%", trend: "up", icon: Workflow },
