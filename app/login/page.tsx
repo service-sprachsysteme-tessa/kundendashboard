@@ -48,13 +48,13 @@ export default function LoginPage() {
           <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
             <Workflow className="w-5 h-5 text-primary-foreground" />
           </div>
-          <span className="font-semibold text-xl text-foreground">Emmanuel</span>
+          <span className="font-semibold text-xl text-foreground">{"Sprachsysteme Tessa"}</span>
         </div>
 
         <Card className="border-border">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Welcome back</CardTitle>
-            <CardDescription>Sign in to your account to continue</CardDescription>
+            <CardTitle className="text-2xl">Willkommen</CardTitle>
+            <CardDescription>Melden Sie sich an, um auf Ihre Daten zuzugreifen                  </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
@@ -65,7 +65,7 @@ export default function LoginPage() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="Hier Email eingeben"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -77,14 +77,14 @@ export default function LoginPage() {
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Password</Label>
                   <Link href="/forgot-password" className="text-sm text-primary hover:underline">
-                    Forgot password?
+                    Passwort vergessen? 
                   </Link>
                 </div>
                 <div className="relative">
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="Enter your password"
+                    placeholder="Hier Passwort eingeben"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -115,17 +115,12 @@ export default function LoginPage() {
                     Signing in...
                   </>
                 ) : (
-                  "Sign in"
+                  "anmelden"
                 )}
               </Button>
             </form>
 
-            <div className="mt-6 text-center text-sm text-muted-foreground">
-              Don&apos;t have an account?{" "}
-              <Link href="/signup" className="text-primary hover:underline font-medium">
-                Sign up
-              </Link>
-            </div>
+            
           </CardContent>
         </Card>
 
