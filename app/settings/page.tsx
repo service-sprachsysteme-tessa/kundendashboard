@@ -49,8 +49,8 @@ export default function SettingsPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900">Settings</h1>
-            <p className="text-gray-600 mt-1">Manage your account preferences and configuration</p>
+            <h1 className="text-2xl font-semibold text-foreground">Settings</h1>
+            <p className="text-muted-foreground mt-1">Manage your account preferences and configuration</p>
           </div>
         </div>
 
@@ -64,7 +64,7 @@ export default function SettingsPage() {
           </TabsList>
 
           <TabsContent value="profile" className="space-y-6">
-            <Card className="border-gray-200">
+            <Card className="border-border">
               <CardHeader>
                 <CardTitle>Profile Information</CardTitle>
                 <CardDescription>Update your personal information and profile settings</CardDescription>
@@ -80,7 +80,7 @@ export default function SettingsPage() {
                       <Upload className="w-4 h-4" />
                       Upload Photo
                     </Button>
-                    <p className="text-sm text-gray-600">JPG, PNG or GIF. Max size 2MB.</p>
+                    <p className="text-sm text-muted-foreground">JPG, PNG or GIF. Max size 2MB.</p>
                   </div>
                 </div>
 
@@ -132,7 +132,7 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="flex justify-end">
-                  <Button className="bg-purple-600 hover:bg-purple-700 gap-2">
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
                     <Save className="w-4 h-4" />
                     Save Changes
                   </Button>
@@ -142,21 +142,21 @@ export default function SettingsPage() {
           </TabsContent>
 
           <TabsContent value="notifications" className="space-y-6">
-            <Card className="border-gray-200">
+            <Card className="border-border">
               <CardHeader>
                 <CardTitle>Notification Preferences</CardTitle>
                 <CardDescription>Choose how you want to be notified about important events</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Notification Channels</h3>
+                  <h3 className="font-medium text-foreground">Notification Channels</h3>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <Mail className="w-5 h-5 text-gray-400" />
+                        <Mail className="w-5 h-5 text-muted-foreground" />
                         <div>
                           <div className="font-medium">Email Notifications</div>
-                          <div className="text-sm text-gray-600">Receive notifications via email</div>
+                          <div className="text-sm text-muted-foreground">Receive notifications via email</div>
                         </div>
                       </div>
                       <Switch
@@ -167,10 +167,10 @@ export default function SettingsPage() {
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <Bell className="w-5 h-5 text-gray-400" />
+                        <Bell className="w-5 h-5 text-muted-foreground" />
                         <div>
                           <div className="font-medium">Push Notifications</div>
-                          <div className="text-sm text-gray-600">Receive browser push notifications</div>
+                          <div className="text-sm text-muted-foreground">Receive browser push notifications</div>
                         </div>
                       </div>
                       <Switch
@@ -181,10 +181,10 @@ export default function SettingsPage() {
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <Smartphone className="w-5 h-5 text-gray-400" />
+                        <Smartphone className="w-5 h-5 text-muted-foreground" />
                         <div>
                           <div className="font-medium">SMS Notifications</div>
-                          <div className="text-sm text-gray-600">Receive text message alerts</div>
+                          <div className="text-sm text-muted-foreground">Receive text message alerts</div>
                         </div>
                       </div>
                       <Switch
@@ -196,12 +196,12 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Event Notifications</h3>
+                  <h3 className="font-medium text-foreground">Event Notifications</h3>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="font-medium">Workflow Success</div>
-                        <div className="text-sm text-gray-600">When workflows complete successfully</div>
+                        <div className="text-sm text-muted-foreground">When workflows complete successfully</div>
                       </div>
                       <Switch
                         checked={notifications.workflowSuccess}
@@ -212,7 +212,7 @@ export default function SettingsPage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="font-medium">Workflow Failure</div>
-                        <div className="text-sm text-gray-600">When workflows fail or encounter errors</div>
+                        <div className="text-sm text-muted-foreground">When workflows fail or encounter errors</div>
                       </div>
                       <Switch
                         checked={notifications.workflowFailure}
@@ -223,7 +223,7 @@ export default function SettingsPage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="font-medium">Weekly Reports</div>
-                        <div className="text-sm text-gray-600">Weekly summary of workflow performance</div>
+                        <div className="text-sm text-muted-foreground">Weekly summary of workflow performance</div>
                       </div>
                       <Switch
                         checked={notifications.weeklyReport}
@@ -234,7 +234,9 @@ export default function SettingsPage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="font-medium">Security Alerts</div>
-                        <div className="text-sm text-gray-600">Important security and account notifications</div>
+                        <div className="text-sm text-muted-foreground">
+                          Important security and account notifications
+                        </div>
                       </div>
                       <Switch
                         checked={notifications.securityAlerts}
@@ -245,7 +247,7 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="flex justify-end">
-                  <Button className="bg-purple-600 hover:bg-purple-700 gap-2">
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
                     <Save className="w-4 h-4" />
                     Save Preferences
                   </Button>
@@ -255,14 +257,14 @@ export default function SettingsPage() {
           </TabsContent>
 
           <TabsContent value="security" className="space-y-6">
-            <Card className="border-gray-200">
+            <Card className="border-border">
               <CardHeader>
                 <CardTitle>Security Settings</CardTitle>
                 <CardDescription>Manage your account security and authentication</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Password</h3>
+                  <h3 className="font-medium text-foreground">Password</h3>
                   <div className="space-y-4">
                     <div className="space-y-2">
                       <Label htmlFor="currentPassword">Current Password</Label>
@@ -302,13 +304,15 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Two-Factor Authentication</h3>
-                  <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                  <h3 className="font-medium text-foreground">Two-Factor Authentication</h3>
+                  <div className="flex items-center justify-between p-4 border border-border rounded-lg">
                     <div>
                       <div className="font-medium">Authenticator App</div>
-                      <div className="text-sm text-gray-600">Use an authenticator app for additional security</div>
+                      <div className="text-sm text-muted-foreground">
+                        Use an authenticator app for additional security
+                      </div>
                     </div>
-                    <Badge variant="secondary" className="bg-red-100 text-red-700">
+                    <Badge variant="secondary" className="bg-destructive/20 text-destructive">
                       Disabled
                     </Badge>
                   </div>
@@ -319,24 +323,24 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Active Sessions</h3>
+                  <h3 className="font-medium text-foreground">Active Sessions</h3>
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                    <div className="flex items-center justify-between p-4 border border-border rounded-lg">
                       <div>
                         <div className="font-medium">Current Session</div>
-                        <div className="text-sm text-gray-600">Chrome on macOS • San Francisco, CA</div>
-                        <div className="text-xs text-gray-500">Last active: Now</div>
+                        <div className="text-sm text-muted-foreground">Chrome on macOS • San Francisco, CA</div>
+                        <div className="text-xs text-muted-foreground">Last active: Now</div>
                       </div>
-                      <Badge variant="secondary" className="bg-green-100 text-green-700">
+                      <Badge variant="secondary" className="bg-chart-2/20 text-chart-2">
                         Current
                       </Badge>
                     </div>
 
-                    <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                    <div className="flex items-center justify-between p-4 border border-border rounded-lg">
                       <div>
                         <div className="font-medium">Mobile App</div>
-                        <div className="text-sm text-gray-600">iPhone • San Francisco, CA</div>
-                        <div className="text-xs text-gray-500">Last active: 2 hours ago</div>
+                        <div className="text-sm text-muted-foreground">iPhone • San Francisco, CA</div>
+                        <div className="text-xs text-muted-foreground">Last active: 2 hours ago</div>
                       </div>
                       <Button variant="outline" size="sm">
                         Revoke
@@ -349,22 +353,22 @@ export default function SettingsPage() {
           </TabsContent>
 
           <TabsContent value="billing" className="space-y-6">
-            <Card className="border-gray-200">
+            <Card className="border-border">
               <CardHeader>
                 <CardTitle>Billing & Subscription</CardTitle>
                 <CardDescription>Manage your subscription and billing information</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Current Plan</h3>
-                  <div className="p-4 border border-gray-200 rounded-lg">
+                  <h3 className="font-medium text-foreground">Current Plan</h3>
+                  <div className="p-4 border border-border rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <div className="font-medium text-lg">Pro Plan</div>
-                      <Badge variant="secondary" className="bg-purple-100 text-purple-700">
+                      <Badge variant="secondary" className="bg-primary/20 text-primary">
                         Active
                       </Badge>
                     </div>
-                    <div className="text-sm text-gray-600 mb-4">
+                    <div className="text-sm text-muted-foreground mb-4">
                       $29/month • Billed monthly • Next billing: Jan 15, 2025
                     </div>
                     <div className="flex gap-2">
@@ -379,14 +383,14 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Payment Method</h3>
-                  <div className="p-4 border border-gray-200 rounded-lg">
+                  <h3 className="font-medium text-foreground">Payment Method</h3>
+                  <div className="p-4 border border-border rounded-lg">
                     <div className="flex items-center gap-3 mb-2">
-                      <CreditCard className="w-5 h-5 text-gray-400" />
+                      <CreditCard className="w-5 h-5 text-muted-foreground" />
                       <div className="font-medium">•••• •••• •••• 4242</div>
                       <Badge variant="secondary">Default</Badge>
                     </div>
-                    <div className="text-sm text-gray-600 mb-4">Expires 12/2027</div>
+                    <div className="text-sm text-muted-foreground mb-4">Expires 12/2027</div>
                     <div className="flex gap-2">
                       <Button variant="outline" size="sm">
                         Update Card
@@ -399,12 +403,12 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Billing History</h3>
+                  <h3 className="font-medium text-foreground">Billing History</h3>
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                    <div className="flex items-center justify-between p-3 border border-border rounded-lg">
                       <div>
                         <div className="font-medium">Dec 15, 2024</div>
-                        <div className="text-sm text-gray-600">Pro Plan - Monthly</div>
+                        <div className="text-sm text-muted-foreground">Pro Plan - Monthly</div>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="font-medium">$29.00</span>
@@ -414,10 +418,10 @@ export default function SettingsPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                    <div className="flex items-center justify-between p-3 border border-border rounded-lg">
                       <div>
                         <div className="font-medium">Nov 15, 2024</div>
-                        <div className="text-sm text-gray-600">Pro Plan - Monthly</div>
+                        <div className="text-sm text-muted-foreground">Pro Plan - Monthly</div>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="font-medium">$29.00</span>
@@ -433,14 +437,14 @@ export default function SettingsPage() {
           </TabsContent>
 
           <TabsContent value="preferences" className="space-y-6">
-            <Card className="border-gray-200">
+            <Card className="border-border">
               <CardHeader>
                 <CardTitle>Application Preferences</CardTitle>
                 <CardDescription>Customize your application experience</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Appearance</h3>
+                  <h3 className="font-medium text-foreground">Appearance</h3>
                   <div className="space-y-4">
                     <div className="space-y-2">
                       <Label htmlFor="theme">Theme</Label>
@@ -474,12 +478,14 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Data & Privacy</h3>
+                  <h3 className="font-medium text-foreground">Data & Privacy</h3>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="font-medium">Analytics & Usage Data</div>
-                        <div className="text-sm text-gray-600">Help improve our product by sharing usage data</div>
+                        <div className="text-sm text-muted-foreground">
+                          Help improve our product by sharing usage data
+                        </div>
                       </div>
                       <Switch defaultChecked />
                     </div>
@@ -487,7 +493,9 @@ export default function SettingsPage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="font-medium">Marketing Communications</div>
-                        <div className="text-sm text-gray-600">Receive product updates and marketing emails</div>
+                        <div className="text-sm text-muted-foreground">
+                          Receive product updates and marketing emails
+                        </div>
                       </div>
                       <Switch />
                     </div>
@@ -495,9 +503,9 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Data Export</h3>
+                  <h3 className="font-medium text-foreground">Data Export</h3>
                   <div className="space-y-4">
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-muted-foreground">
                       Export your data including workflows, logs, and account information.
                     </p>
                     <Button variant="outline" className="gap-2 bg-transparent">
@@ -508,12 +516,12 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900 text-red-600">Danger Zone</h3>
-                  <div className="p-4 border border-red-200 rounded-lg bg-red-50">
+                  <h3 className="font-medium text-destructive">Danger Zone</h3>
+                  <div className="p-4 border border-destructive/30 rounded-lg bg-destructive/10">
                     <div className="space-y-4">
                       <div>
-                        <div className="font-medium text-red-900">Delete Account</div>
-                        <div className="text-sm text-red-700">
+                        <div className="font-medium text-destructive">Delete Account</div>
+                        <div className="text-sm text-destructive/80">
                           Permanently delete your account and all associated data. This action cannot be undone.
                         </div>
                       </div>
@@ -526,7 +534,7 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="flex justify-end">
-                  <Button className="bg-purple-600 hover:bg-purple-700 gap-2">
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
                     <Save className="w-4 h-4" />
                     Save Preferences
                   </Button>

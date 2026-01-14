@@ -122,25 +122,25 @@ const roles = [
     name: "Owner",
     description: "Full access to all features and billing",
     permissions: ["admin", "workflows", "analytics", "billing", "team"],
-    color: "bg-purple-100 text-purple-700",
+    color: "bg-primary/20 text-primary",
   },
   {
     name: "Manager",
     description: "Can manage workflows and team members",
     permissions: ["workflows", "analytics", "team"],
-    color: "bg-blue-100 text-blue-700",
+    color: "bg-accent/20 text-accent",
   },
   {
     name: "Engineer",
     description: "Can create and manage workflows",
     permissions: ["workflows", "analytics"],
-    color: "bg-green-100 text-green-700",
+    color: "bg-chart-2/20 text-chart-2",
   },
   {
     name: "Designer",
     description: "Can create workflows and view analytics",
     permissions: ["workflows"],
-    color: "bg-orange-100 text-orange-700",
+    color: "bg-chart-4/20 text-chart-4",
   },
 ]
 
@@ -157,19 +157,19 @@ export default function TeamPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "online":
-        return "bg-green-500"
+        return "bg-chart-2"
       case "away":
-        return "bg-yellow-500"
+        return "bg-chart-4"
       case "offline":
-        return "bg-gray-400"
+        return "bg-muted-foreground"
       default:
-        return "bg-gray-400"
+        return "bg-muted-foreground"
     }
   }
 
   const getRoleColor = (role: string) => {
     const roleConfig = roles.find((r) => r.name === role)
-    return roleConfig?.color || "bg-gray-100 text-gray-700"
+    return roleConfig?.color || "bg-muted text-muted-foreground"
   }
 
   return (
@@ -178,15 +178,15 @@ export default function TeamPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900">Team</h1>
-            <p className="text-gray-600 mt-1">Manage your team members and their permissions</p>
+            <h1 className="text-2xl font-semibold text-foreground">Team</h1>
+            <p className="text-muted-foreground mt-1">Manage your team members and their permissions</p>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" className="gap-2 bg-transparent">
               <Settings className="w-4 h-4" />
               Settings
             </Button>
-            <Button className="bg-purple-600 hover:bg-purple-700 gap-2">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
               <UserPlus className="w-4 h-4" />
               Invite Member
             </Button>
@@ -195,7 +195,7 @@ export default function TeamPage() {
 
         {/* Search */}
         <div className="relative max-w-md">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
           <Input
             placeholder="Search team members..."
             value={searchQuery}
@@ -214,61 +214,61 @@ export default function TeamPage() {
           <TabsContent value="members" className="space-y-6">
             {/* Team Stats */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <Card className="border-gray-200">
+              <Card className="border-border">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <User className="w-5 h-5 text-blue-600" />
+                    <div className="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center">
+                      <User className="w-5 h-5 text-accent" />
                     </div>
                     <div>
-                      <div className="text-2xl font-semibold text-gray-900">{teamMembers.length}</div>
-                      <div className="text-sm text-gray-600">Total Members</div>
+                      <div className="text-2xl font-semibold text-foreground">{teamMembers.length}</div>
+                      <div className="text-sm text-muted-foreground">Total Members</div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200">
+              <Card className="border-border">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <div className="w-10 h-10 bg-chart-2/20 rounded-lg flex items-center justify-center">
+                      <div className="w-2 h-2 bg-chart-2 rounded-full"></div>
                     </div>
                     <div>
-                      <div className="text-2xl font-semibold text-gray-900">
+                      <div className="text-2xl font-semibold text-foreground">
                         {teamMembers.filter((m) => m.status === "online").length}
                       </div>
-                      <div className="text-sm text-gray-600">Online Now</div>
+                      <div className="text-sm text-muted-foreground">Online Now</div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200">
+              <Card className="border-border">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                      <Crown className="w-5 h-5 text-purple-600" />
+                    <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+                      <Crown className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <div className="text-2xl font-semibold text-gray-900">
+                      <div className="text-2xl font-semibold text-foreground">
                         {teamMembers.filter((m) => m.role === "Owner" || m.role === "Manager").length}
                       </div>
-                      <div className="text-sm text-gray-600">Admins</div>
+                      <div className="text-sm text-muted-foreground">Admins</div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200">
+              <Card className="border-border">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                      <UserPlus className="w-5 h-5 text-orange-600" />
+                    <div className="w-10 h-10 bg-chart-4/20 rounded-lg flex items-center justify-center">
+                      <UserPlus className="w-5 h-5 text-chart-4" />
                     </div>
                     <div>
-                      <div className="text-2xl font-semibold text-gray-900">{invitations.length}</div>
-                      <div className="text-sm text-gray-600">Pending Invites</div>
+                      <div className="text-2xl font-semibold text-foreground">{invitations.length}</div>
+                      <div className="text-sm text-muted-foreground">Pending Invites</div>
                     </div>
                   </div>
                 </CardContent>
@@ -278,7 +278,7 @@ export default function TeamPage() {
             {/* Team Members List */}
             <div className="grid gap-4">
               {filteredMembers.map((member) => (
-                <Card key={member.id} className="border-gray-200">
+                <Card key={member.id} className="border-border">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
@@ -293,19 +293,19 @@ export default function TeamPage() {
                             </AvatarFallback>
                           </Avatar>
                           <div
-                            className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white ${getStatusColor(member.status)}`}
+                            className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-background ${getStatusColor(member.status)}`}
                           ></div>
                         </div>
 
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <h3 className="font-semibold text-gray-900">{member.name}</h3>
-                            {member.isOwner && <Crown className="w-4 h-4 text-purple-600" />}
+                            <h3 className="font-semibold text-foreground">{member.name}</h3>
+                            {member.isOwner && <Crown className="w-4 h-4 text-primary" />}
                             <Badge variant="secondary" className={getRoleColor(member.role)}>
                               {member.role}
                             </Badge>
                           </div>
-                          <div className="flex items-center gap-4 text-sm text-gray-600">
+                          <div className="flex items-center gap-4 text-sm text-muted-foreground">
                             <div className="flex items-center gap-1">
                               <Mail className="w-3 h-3" />
                               {member.email}
@@ -324,8 +324,8 @@ export default function TeamPage() {
 
                       <div className="flex items-center gap-4">
                         <div className="text-right">
-                          <div className="text-sm font-medium text-gray-900">{member.workflowsCreated} workflows</div>
-                          <div className="text-xs text-gray-500">created</div>
+                          <div className="text-sm font-medium text-foreground">{member.workflowsCreated} workflows</div>
+                          <div className="text-xs text-muted-foreground">created</div>
                         </div>
 
                         <DropdownMenu>
@@ -349,7 +349,7 @@ export default function TeamPage() {
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             {!member.isOwner && (
-                              <DropdownMenuItem className="text-red-600">
+                              <DropdownMenuItem className="text-destructive">
                                 <Trash2 className="w-4 h-4 mr-2" />
                                 Remove Member
                               </DropdownMenuItem>
@@ -368,16 +368,16 @@ export default function TeamPage() {
             {invitations.length > 0 ? (
               <div className="grid gap-4">
                 {invitations.map((invitation) => (
-                  <Card key={invitation.id} className="border-gray-200">
+                  <Card key={invitation.id} className="border-border">
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                            <Mail className="w-5 h-5 text-gray-400" />
+                          <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center">
+                            <Mail className="w-5 h-5 text-muted-foreground" />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-gray-900">{invitation.email}</h3>
-                            <div className="flex items-center gap-4 text-sm text-gray-600">
+                            <h3 className="font-semibold text-foreground">{invitation.email}</h3>
+                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
                               <span>Role: {invitation.role}</span>
                               <span>Invited by {invitation.invitedBy}</span>
                               <span>{invitation.invitedDate}</span>
@@ -386,7 +386,7 @@ export default function TeamPage() {
                         </div>
 
                         <div className="flex items-center gap-2">
-                          <Badge variant="secondary" className="bg-yellow-100 text-yellow-700">
+                          <Badge variant="secondary" className="bg-chart-4/20 text-chart-4">
                             Pending
                           </Badge>
                           <DropdownMenu>
@@ -400,7 +400,7 @@ export default function TeamPage() {
                                 <Mail className="w-4 h-4 mr-2" />
                                 Resend Invitation
                               </DropdownMenuItem>
-                              <DropdownMenuItem className="text-red-600">
+                              <DropdownMenuItem className="text-destructive">
                                 <Trash2 className="w-4 h-4 mr-2" />
                                 Cancel Invitation
                               </DropdownMenuItem>
@@ -414,12 +414,12 @@ export default function TeamPage() {
               </div>
             ) : (
               <div className="text-center py-12">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <UserPlus className="w-8 h-8 text-gray-400" />
+                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                  <UserPlus className="w-8 h-8 text-muted-foreground" />
                 </div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">No Pending Invitations</h3>
-                <p className="text-gray-600 mb-4">All team invitations have been accepted or expired.</p>
-                <Button className="bg-purple-600 hover:bg-purple-700">
+                <h3 className="text-lg font-medium text-foreground mb-2">No Pending Invitations</h3>
+                <p className="text-muted-foreground mb-4">All team invitations have been accepted or expired.</p>
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
                   <UserPlus className="w-4 h-4 mr-2" />
                   Invite New Member
                 </Button>
@@ -430,7 +430,7 @@ export default function TeamPage() {
           <TabsContent value="roles" className="space-y-6">
             <div className="grid gap-6">
               {roles.map((role, index) => (
-                <Card key={index} className="border-gray-200">
+                <Card key={index} className="border-border">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div>
@@ -441,14 +441,14 @@ export default function TeamPage() {
                         </CardTitle>
                         <CardDescription className="mt-2">{role.description}</CardDescription>
                       </div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-sm text-muted-foreground">
                         {teamMembers.filter((m) => m.role === role.name).length} members
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
-                      <h4 className="font-medium text-gray-900">Permissions:</h4>
+                      <h4 className="font-medium text-foreground">Permissions:</h4>
                       <div className="flex flex-wrap gap-2">
                         {role.permissions.map((permission, permIndex) => (
                           <Badge key={permIndex} variant="outline" className="text-xs">

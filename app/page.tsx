@@ -171,32 +171,32 @@ export default function Dashboard() {
   const [selectedPeriod, setSelectedPeriod] = useState("Last 30 days")
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="h-16 border-b border-gray-200 bg-white px-6 flex items-center justify-between">
+      <header className="h-16 border-b border-border bg-background px-6 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
-              <Workflow className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+              <Workflow className="w-4 h-4 text-primary-foreground" />
             </div>
-            <span className="font-semibold text-gray-900">Emma</span>
+            <span className="font-semibold text-foreground">Emma</span>
           </div>
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-muted-foreground">
             <span>Dashboard</span> <span className="mx-1">/</span> <span>Overview</span>
           </div>
         </div>
 
         <div className="flex items-center gap-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
               placeholder="Search workflows, logs..."
-              className="pl-10 w-80 bg-gray-50 border-gray-200 focus:bg-white"
+              className="pl-10 w-80 bg-muted border-input focus:bg-background"
             />
           </div>
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="w-4 h-4" />
-            <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            <span className="absolute -top-1 -right-1 w-2 h-2 bg-destructive rounded-full"></span>
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -222,11 +222,11 @@ export default function Dashboard() {
 
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-60 border-r border-gray-200 bg-white h-[calc(100vh-4rem)] overflow-y-auto">
+        <aside className="w-60 border-r border-border bg-background h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="p-4">
             <div className="relative mb-6">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-              <Input placeholder="Search anything..." className="pl-10 bg-gray-50 border-gray-200 text-sm" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <Input placeholder="Search anything..." className="pl-10 bg-muted border-input text-sm" />
               <Button
                 size="icon"
                 variant="ghost"
@@ -239,42 +239,42 @@ export default function Dashboard() {
             <nav className="space-y-1">
               <Link
                 href="/"
-                className="flex items-center w-full justify-start bg-purple-50 text-purple-700 hover:bg-purple-100 px-3 py-2 rounded-md text-sm font-medium"
+                className="flex items-center w-full justify-start bg-primary/10 text-primary hover:bg-primary/20 px-3 py-2 rounded-md text-sm font-medium"
               >
                 <Home className="w-4 h-4 mr-3" />
                 Overview
               </Link>
               <Link
                 href="/workflows"
-                className="flex items-center w-full justify-start text-gray-600 hover:bg-gray-50 px-3 py-2 rounded-md text-sm font-medium"
+                className="flex items-center w-full justify-start text-muted-foreground hover:bg-muted px-3 py-2 rounded-md text-sm font-medium"
               >
                 <Workflow className="w-4 h-4 mr-3" />
                 Workflows
               </Link>
               <Link
                 href="/analytics"
-                className="flex items-center w-full justify-start text-gray-600 hover:bg-gray-50 px-3 py-2 rounded-md text-sm font-medium"
+                className="flex items-center w-full justify-start text-muted-foreground hover:bg-muted px-3 py-2 rounded-md text-sm font-medium"
               >
                 <BarChart3 className="w-4 h-4 mr-3" />
                 Analytics
               </Link>
               <Link
                 href="/templates"
-                className="flex items-center w-full justify-start text-gray-600 hover:bg-gray-50 px-3 py-2 rounded-md text-sm font-medium"
+                className="flex items-center w-full justify-start text-muted-foreground hover:bg-muted px-3 py-2 rounded-md text-sm font-medium"
               >
                 <Database className="w-4 h-4 mr-3" />
                 Templates
               </Link>
               <Link
                 href="/team"
-                className="flex items-center w-full justify-start text-gray-600 hover:bg-gray-50 px-3 py-2 rounded-md text-sm font-medium"
+                className="flex items-center w-full justify-start text-muted-foreground hover:bg-muted px-3 py-2 rounded-md text-sm font-medium"
               >
                 <Users className="w-4 h-4 mr-3" />
                 Team
               </Link>
               <Link
                 href="/settings"
-                className="flex items-center w-full justify-start text-gray-600 hover:bg-gray-50 px-3 py-2 rounded-md text-sm font-medium"
+                className="flex items-center w-full justify-start text-muted-foreground hover:bg-muted px-3 py-2 rounded-md text-sm font-medium"
               >
                 <Settings className="w-4 h-4 mr-3" />
                 Settings
@@ -284,13 +284,13 @@ export default function Dashboard() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-8 bg-gray-50">
+        <main className="flex-1 p-8 bg-muted">
           {/* Quick Actions Bar */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h1 className="text-2xl font-semibold text-gray-900">Dashboard Overview</h1>
-                <p className="text-gray-600 mt-1">Monitor your workflows and system performance</p>
+                <h1 className="text-2xl font-semibold text-foreground">Dashboard Overview</h1>
+                <p className="text-muted-foreground mt-1">Monitor your workflows and system performance</p>
               </div>
               <div className="flex items-center gap-3">
                 <DropdownMenu>
@@ -305,7 +305,7 @@ export default function Dashboard() {
                     <DropdownMenuItem onClick={() => setSelectedPeriod("Last 90 days")}>Last 90 days</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
-                <Button className="bg-purple-600 hover:bg-purple-700">
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
                   <Plus className="w-4 h-4 mr-2" />
                   New Workflow
                 </Button>
@@ -314,38 +314,38 @@ export default function Dashboard() {
 
             {/* Quick Action Cards */}
             <div className="grid grid-cols-3 gap-4 mb-8">
-              <Card className="p-6 hover:shadow-md transition-shadow cursor-pointer border-gray-200">
+              <Card className="p-6 hover:shadow-md transition-shadow cursor-pointer border-border">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                    <Plus className="w-6 h-6 text-green-600" />
+                  <div className="w-12 h-12 bg-chart-2/20 rounded-lg flex items-center justify-center">
+                    <Plus className="w-6 h-6 text-chart-2" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-gray-900">New workflow</h3>
-                    <p className="text-sm text-gray-600">Create a new automation</p>
+                    <h3 className="font-medium text-foreground">New workflow</h3>
+                    <p className="text-sm text-muted-foreground">Create a new automation</p>
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-6 hover:shadow-md transition-shadow cursor-pointer border-gray-200">
+              <Card className="p-6 hover:shadow-md transition-shadow cursor-pointer border-border">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                    <AlertTriangle className="w-6 h-6 text-red-600" />
+                  <div className="w-12 h-12 bg-destructive/20 rounded-lg flex items-center justify-center">
+                    <AlertTriangle className="w-6 h-6 text-destructive" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-gray-900">View breaches</h3>
-                    <p className="text-sm text-gray-600">Check failed workflows</p>
+                    <h3 className="font-medium text-foreground">View breaches</h3>
+                    <p className="text-sm text-muted-foreground">Check failed workflows</p>
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-6 hover:shadow-md transition-shadow cursor-pointer border-gray-200">
+              <Card className="p-6 hover:shadow-md transition-shadow cursor-pointer border-border">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <RefreshCw className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
+                    <RefreshCw className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-gray-900">Re-run last failed</h3>
-                    <p className="text-sm text-gray-600">Retry failed executions</p>
+                    <h3 className="font-medium text-foreground">Re-run last failed</h3>
+                    <p className="text-sm text-muted-foreground">Retry failed executions</p>
                   </div>
                 </div>
               </Card>
@@ -355,14 +355,14 @@ export default function Dashboard() {
           {/* Metrics Overview */}
           <div className="grid grid-cols-4 gap-6 mb-8">
             {metricsData.map((metric, index) => (
-              <Card key={index} className="border-gray-200">
+              <Card key={index} className="border-border">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                      <metric.icon className="w-5 h-5 text-gray-600" />
+                    <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+                      <metric.icon className="w-5 h-5 text-muted-foreground" />
                     </div>
                     <div
-                      className={`flex items-center gap-1 text-sm ${metric.trend === "up" ? "text-green-600" : "text-red-600"}`}
+                      className={`flex items-center gap-1 text-sm ${metric.trend === "up" ? "text-chart-2" : "text-destructive"}`}
                     >
                       {metric.trend === "up" ? (
                         <TrendingUp className="w-3 h-3" />
@@ -372,8 +372,8 @@ export default function Dashboard() {
                       {metric.change}
                     </div>
                   </div>
-                  <div className="text-2xl font-semibold text-gray-900 mb-1">{metric.value}</div>
-                  <div className="text-sm text-gray-600">{metric.label}</div>
+                  <div className="text-2xl font-semibold text-foreground mb-1">{metric.value}</div>
+                  <div className="text-sm text-muted-foreground">{metric.label}</div>
                 </CardContent>
               </Card>
             ))}
@@ -383,7 +383,7 @@ export default function Dashboard() {
             {/* Main Content Area */}
             <div className="col-span-2 space-y-8">
               {/* Charts Section */}
-              <Card className="border-gray-200">
+              <Card className="border-border">
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between">
                     <div>
@@ -403,13 +403,13 @@ export default function Dashboard() {
                   <div className="h-80">
                     <ResponsiveContainer width="100%" height="100%">
                       <AreaChart data={chartData}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-                        <XAxis dataKey="name" stroke="#6b7280" fontSize={12} />
-                        <YAxis stroke="#6b7280" fontSize={12} />
+                        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                        <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                        <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
                         <Tooltip
                           contentStyle={{
-                            backgroundColor: "white",
-                            border: "1px solid #e5e7eb",
+                            backgroundColor: "hsl(var(--background))",
+                            border: "1px solid hsl(var(--border))",
                             borderRadius: "8px",
                             boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
                           }}
@@ -417,16 +417,16 @@ export default function Dashboard() {
                         <Area
                           type="monotone"
                           dataKey="workflows"
-                          stroke="#8b5cf6"
-                          fill="#8b5cf6"
+                          stroke="hsl(var(--primary))"
+                          fill="hsl(var(--primary))"
                           fillOpacity={0.1}
                           strokeWidth={2}
                         />
                         <Area
                           type="monotone"
                           dataKey="sales"
-                          stroke="#3b82f6"
-                          fill="#3b82f6"
+                          stroke="hsl(var(--accent))"
+                          fill="hsl(var(--accent))"
                           fillOpacity={0.1}
                           strokeWidth={2}
                         />
@@ -437,7 +437,7 @@ export default function Dashboard() {
               </Card>
 
               {/* Workflow Status Table */}
-              <Card className="border-gray-200">
+              <Card className="border-border">
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between">
                     <div>
@@ -459,44 +459,46 @@ export default function Dashboard() {
                 <CardContent className="p-0">
                   <Table>
                     <TableHeader>
-                      <TableRow className="bg-gray-50">
-                        <TableHead className="font-medium text-gray-700">Run ID</TableHead>
-                        <TableHead className="font-medium text-gray-700">Workflow</TableHead>
-                        <TableHead className="font-medium text-gray-700">Started</TableHead>
-                        <TableHead className="font-medium text-gray-700">Duration</TableHead>
-                        <TableHead className="font-medium text-gray-700">Status</TableHead>
-                        <TableHead className="font-medium text-gray-700">Error</TableHead>
-                        <TableHead className="font-medium text-gray-700 w-12"></TableHead>
+                      <TableRow className="bg-muted">
+                        <TableHead className="font-medium text-muted-foreground">Run ID</TableHead>
+                        <TableHead className="font-medium text-muted-foreground">Workflow</TableHead>
+                        <TableHead className="font-medium text-muted-foreground">Started</TableHead>
+                        <TableHead className="font-medium text-muted-foreground">Duration</TableHead>
+                        <TableHead className="font-medium text-muted-foreground">Status</TableHead>
+                        <TableHead className="font-medium text-muted-foreground">Error</TableHead>
+                        <TableHead className="font-medium text-muted-foreground w-12"></TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {workflowData.map((workflow) => (
-                        <TableRow key={workflow.id} className="hover:bg-gray-50">
+                        <TableRow key={workflow.id} className="hover:bg-muted">
                           <TableCell className="font-mono text-sm">{workflow.id}</TableCell>
                           <TableCell className="font-medium">{workflow.name}</TableCell>
-                          <TableCell className="text-gray-600">{workflow.started}</TableCell>
-                          <TableCell className="text-gray-600">{workflow.duration}</TableCell>
+                          <TableCell className="text-muted-foreground">{workflow.started}</TableCell>
+                          <TableCell className="text-muted-foreground">{workflow.duration}</TableCell>
                           <TableCell>
                             {workflow.status === "running" && (
-                              <Badge variant="secondary" className="bg-blue-100 text-blue-700">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></div>
+                              <Badge variant="secondary" className="bg-accent/20 text-accent">
+                                <div className="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"></div>
                                 Running
                               </Badge>
                             )}
                             {workflow.status === "success" && (
-                              <Badge variant="secondary" className="bg-green-100 text-green-700">
+                              <Badge variant="secondary" className="bg-chart-2/20 text-chart-2">
                                 <CheckCircle className="w-3 h-3 mr-1" />
                                 Success
                               </Badge>
                             )}
                             {workflow.status === "failed" && (
-                              <Badge variant="secondary" className="bg-red-100 text-red-700">
+                              <Badge variant="secondary" className="bg-destructive/20 text-destructive">
                                 <XCircle className="w-3 h-3 mr-1" />
                                 Failed
                               </Badge>
                             )}
                           </TableCell>
-                          <TableCell className="text-gray-600 max-w-48 truncate">{workflow.error || "None"}</TableCell>
+                          <TableCell className="text-muted-foreground max-w-48 truncate">
+                            {workflow.error || "None"}
+                          </TableCell>
                           <TableCell>
                             <DropdownMenu>
                               <DropdownMenuTrigger asChild>
@@ -509,7 +511,7 @@ export default function Dashboard() {
                                 <DropdownMenuItem>Re-run</DropdownMenuItem>
                                 <DropdownMenuItem>View Logs</DropdownMenuItem>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem className="text-red-600">Cancel</DropdownMenuItem>
+                                <DropdownMenuItem className="text-destructive">Cancel</DropdownMenuItem>
                               </DropdownMenuContent>
                             </DropdownMenu>
                           </TableCell>
@@ -524,19 +526,19 @@ export default function Dashboard() {
             {/* Right Sidebar */}
             <div className="space-y-6">
               {/* Account Balance */}
-              <Card className="border-gray-200">
+              <Card className="border-border">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-lg font-semibold">Account Balance</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-semibold text-gray-900 mb-4">$1,423.25</div>
+                  <div className="text-3xl font-semibold text-foreground mb-4">$1,423.25</div>
                   <div className="space-y-3 mb-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-600">Monthly Credits</span>
+                      <span className="text-sm text-muted-foreground">Monthly Credits</span>
                       <span className="text-sm font-medium">$500.00</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-600">Usage This Month</span>
+                      <span className="text-sm text-muted-foreground">Usage This Month</span>
                       <span className="text-sm font-medium">$76.75</span>
                     </div>
                     <Progress value={15} className="h-2" />
@@ -553,7 +555,7 @@ export default function Dashboard() {
               </Card>
 
               {/* Recent Activity */}
-              <Card className="border-gray-200">
+              <Card className="border-border">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-lg font-semibold">Recent Activity</CardTitle>
                 </CardHeader>
@@ -562,14 +564,14 @@ export default function Dashboard() {
                     {recentActivity.map((activity, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-3 p-4 hover:bg-gray-50 border-b border-gray-100 last:border-b-0"
+                        className="flex items-center gap-3 p-4 hover:bg-muted border-b border-border last:border-b-0"
                       >
                         <div
-                          className={`w-2 h-2 rounded-full ${activity.status === "success" ? "bg-green-500" : "bg-red-500"}`}
+                          className={`w-2 h-2 rounded-full ${activity.status === "success" ? "bg-chart-2" : "bg-destructive"}`}
                         ></div>
                         <div className="flex-1 min-w-0">
-                          <div className="font-medium text-sm text-gray-900 truncate">{activity.workflow}</div>
-                          <div className="text-xs text-gray-600">
+                          <div className="font-medium text-sm text-foreground truncate">{activity.workflow}</div>
+                          <div className="text-xs text-muted-foreground">
                             {activity.time} • {activity.duration}
                           </div>
                         </div>
@@ -580,7 +582,7 @@ export default function Dashboard() {
               </Card>
 
               {/* Team Status */}
-              <Card className="border-gray-200">
+              <Card className="border-border">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-lg font-semibold">Team Status</CardTitle>
                 </CardHeader>
@@ -589,7 +591,7 @@ export default function Dashboard() {
                     {teamMembers.map((member, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-3 p-4 hover:bg-gray-50 border-b border-gray-100 last:border-b-0"
+                        className="flex items-center gap-3 p-4 hover:bg-muted border-b border-border last:border-b-0"
                       >
                         <div className="relative">
                           <Avatar className="w-8 h-8">
@@ -602,14 +604,14 @@ export default function Dashboard() {
                             </AvatarFallback>
                           </Avatar>
                           <div
-                            className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white ${
-                              member.status === "online" ? "bg-green-500" : "bg-gray-400"
+                            className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-background ${
+                              member.status === "online" ? "bg-chart-2" : "bg-muted-foreground"
                             }`}
                           ></div>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="font-medium text-sm text-gray-900">{member.name}</div>
-                          <div className="text-xs text-gray-600">
+                          <div className="font-medium text-sm text-foreground">{member.name}</div>
+                          <div className="text-xs text-muted-foreground">
                             {member.role} • {member.availability}
                           </div>
                         </div>

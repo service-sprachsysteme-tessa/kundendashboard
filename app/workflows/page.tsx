@@ -92,15 +92,15 @@ export default function WorkflowsPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900">Workflows</h1>
-            <p className="text-gray-600 mt-1">Manage and monitor your automation workflows</p>
+            <h1 className="text-2xl font-semibold text-foreground">Workflows</h1>
+            <p className="text-muted-foreground mt-1">Manage and monitor your automation workflows</p>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" className="gap-2 bg-transparent">
               <Filter className="w-4 h-4" />
               Filter
             </Button>
-            <Button className="bg-purple-600 hover:bg-purple-700 gap-2">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
               <Plus className="w-4 h-4" />
               New Workflow
             </Button>
@@ -110,7 +110,7 @@ export default function WorkflowsPage() {
         {/* Search and Stats */}
         <div className="flex items-center gap-4">
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
               placeholder="Search workflows..."
               value={searchQuery}
@@ -118,17 +118,17 @@ export default function WorkflowsPage() {
               className="pl-10"
             />
           </div>
-          <div className="flex items-center gap-6 text-sm text-gray-600">
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-chart-2 rounded-full"></div>
               <span>4 Active</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-chart-4 rounded-full"></div>
               <span>1 Paused</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-destructive rounded-full"></div>
               <span>1 Error</span>
             </div>
           </div>
@@ -145,20 +145,20 @@ export default function WorkflowsPage() {
             {/* Workflows Grid */}
             <div className="grid gap-6">
               {workflows.map((workflow) => (
-                <Card key={workflow.id} className="border-gray-200">
+                <Card key={workflow.id} className="border-border">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="font-semibold text-gray-900">{workflow.name}</h3>
+                          <h3 className="font-semibold text-foreground">{workflow.name}</h3>
                           <Badge
                             variant="secondary"
                             className={
                               workflow.status === "active"
-                                ? "bg-green-100 text-green-700"
+                                ? "bg-chart-2/20 text-chart-2"
                                 : workflow.status === "paused"
-                                  ? "bg-yellow-100 text-yellow-700"
-                                  : "bg-red-100 text-red-700"
+                                  ? "bg-chart-4/20 text-chart-4"
+                                  : "bg-destructive/20 text-destructive"
                             }
                           >
                             {workflow.status === "active" && <CheckCircle className="w-3 h-3 mr-1" />}
@@ -167,23 +167,23 @@ export default function WorkflowsPage() {
                             {workflow.status.charAt(0).toUpperCase() + workflow.status.slice(1)}
                           </Badge>
                         </div>
-                        <p className="text-gray-600 text-sm mb-4">{workflow.description}</p>
+                        <p className="text-muted-foreground text-sm mb-4">{workflow.description}</p>
 
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                           <div>
-                            <span className="text-gray-500">Last Run</span>
+                            <span className="text-muted-foreground">Last Run</span>
                             <div className="font-medium">{workflow.lastRun}</div>
                           </div>
                           <div>
-                            <span className="text-gray-500">Next Run</span>
+                            <span className="text-muted-foreground">Next Run</span>
                             <div className="font-medium">{workflow.nextRun}</div>
                           </div>
                           <div>
-                            <span className="text-gray-500">Success Rate</span>
+                            <span className="text-muted-foreground">Success Rate</span>
                             <div className="font-medium">{workflow.successRate}%</div>
                           </div>
                           <div>
-                            <span className="text-gray-500">Avg Duration</span>
+                            <span className="text-muted-foreground">Avg Duration</span>
                             <div className="font-medium">{workflow.avgDuration}</div>
                           </div>
                         </div>
@@ -219,7 +219,7 @@ export default function WorkflowsPage() {
                             <DropdownMenuItem>View Logs</DropdownMenuItem>
                             <DropdownMenuItem>Duplicate</DropdownMenuItem>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
+                            <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
                       </div>
@@ -231,7 +231,7 @@ export default function WorkflowsPage() {
           </TabsContent>
 
           <TabsContent value="runs" className="space-y-6">
-            <Card className="border-gray-200">
+            <Card className="border-border">
               <CardHeader>
                 <CardTitle>Recent Workflow Runs</CardTitle>
                 <CardDescription>Monitor the latest workflow executions</CardDescription>
@@ -239,7 +239,7 @@ export default function WorkflowsPage() {
               <CardContent className="p-0">
                 <Table>
                   <TableHeader>
-                    <TableRow className="bg-gray-50">
+                    <TableRow className="bg-muted">
                       <TableHead>Run ID</TableHead>
                       <TableHead>Workflow</TableHead>
                       <TableHead>Status</TableHead>
@@ -250,31 +250,31 @@ export default function WorkflowsPage() {
                   </TableHeader>
                   <TableBody>
                     {recentRuns.map((run) => (
-                      <TableRow key={run.id} className="hover:bg-gray-50">
+                      <TableRow key={run.id} className="hover:bg-muted">
                         <TableCell className="font-mono">{run.id}</TableCell>
                         <TableCell className="font-medium">{run.workflow}</TableCell>
                         <TableCell>
                           {run.status === "running" && (
-                            <Badge variant="secondary" className="bg-blue-100 text-blue-700">
-                              <div className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></div>
+                            <Badge variant="secondary" className="bg-accent/20 text-accent">
+                              <div className="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"></div>
                               Running
                             </Badge>
                           )}
                           {run.status === "success" && (
-                            <Badge variant="secondary" className="bg-green-100 text-green-700">
+                            <Badge variant="secondary" className="bg-chart-2/20 text-chart-2">
                               <CheckCircle className="w-3 h-3 mr-1" />
                               Success
                             </Badge>
                           )}
                           {run.status === "failed" && (
-                            <Badge variant="secondary" className="bg-red-100 text-red-700">
+                            <Badge variant="secondary" className="bg-destructive/20 text-destructive">
                               <XCircle className="w-3 h-3 mr-1" />
                               Failed
                             </Badge>
                           )}
                         </TableCell>
                         <TableCell>{run.duration}</TableCell>
-                        <TableCell className="text-gray-600">{run.started}</TableCell>
+                        <TableCell className="text-muted-foreground">{run.started}</TableCell>
                         <TableCell>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -299,12 +299,14 @@ export default function WorkflowsPage() {
 
           <TabsContent value="templates" className="space-y-6">
             <div className="text-center py-12">
-              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Database className="w-8 h-8 text-gray-400" />
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                <Database className="w-8 h-8 text-muted-foreground" />
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No Templates Yet</h3>
-              <p className="text-gray-600 mb-4">Create reusable workflow templates to speed up your automation.</p>
-              <Button className="bg-purple-600 hover:bg-purple-700">
+              <h3 className="text-lg font-medium text-foreground mb-2">No Templates Yet</h3>
+              <p className="text-muted-foreground mb-4">
+                Create reusable workflow templates to speed up your automation.
+              </p>
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 <Plus className="w-4 h-4 mr-2" />
                 Create Template
               </Button>
