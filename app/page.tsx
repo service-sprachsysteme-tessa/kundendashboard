@@ -42,9 +42,6 @@ import {
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
 import Link from "next/link"
-import { supabase } from '@/lib/supabase'
-
-const { data, error } = await supabase.auth.getSession()
 
 
 // Sample data
