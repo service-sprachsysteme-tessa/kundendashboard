@@ -1,0 +1,11 @@
+import { supabase } from '@/lib/supabase'
+
+export default async function TestAuthPage() {
+  const { data, error } = await supabase.auth.getSession()
+
+  return (
+    <pre>
+      {JSON.stringify({ data, error }, null, 2)}
+    </pre>
+  )
+}
