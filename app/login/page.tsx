@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { createClient } from "@/utils/supabase/client"
+import { supabase } from "@/lib/supabase"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -24,8 +24,6 @@ export default function LoginPage() {
     e.preventDefault()
     setIsLoading(true)
     setError(null)
-
-    const supabase = createClient()
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -50,13 +48,13 @@ export default function LoginPage() {
           <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
             <Workflow className="w-5 h-5 text-primary-foreground" />
           </div>
-          <span className="font-semibold text-xl text-foreground">{"Sprachsysteme Tessa"}</span>
+          <span className="font-semibold text-xl text-foreground">Emmanuel</span>
         </div>
 
-        <Card className="border-border">
+        <Card className="border-border shadow-lg">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Willkommen</CardTitle>
-            <CardDescription>Melden Sie sich an, um auf Ihre Daten zuzugreifen</CardDescription>
+            <CardTitle className="text-2xl">Welcome back</CardTitle>
+            <CardDescription>Sign in to your account to continue</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
@@ -67,7 +65,7 @@ export default function LoginPage() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="Hier Email eingeben"
+                  placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -79,14 +77,14 @@ export default function LoginPage() {
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Password</Label>
                   <Link href="/forgot-password" className="text-sm text-primary hover:underline">
-                    Passwort vergessen?
+                    Forgot password?
                   </Link>
                 </div>
                 <div className="relative">
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="Hier Passwort eingeben"
+                    placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -117,10 +115,17 @@ export default function LoginPage() {
                     Signing in...
                   </>
                 ) : (
-                  "anmelden"
+                  "Sign in"
                 )}
               </Button>
             </form>
+
+            <div className="mt-6 text-center text-sm text-muted-foreground">
+              Don&apos;t have an account?{" "}
+              <Link href="/signup" className="text-primary hover:underline font-medium">
+                Sign up
+              </Link>
+            </div>
           </CardContent>
         </Card>
 

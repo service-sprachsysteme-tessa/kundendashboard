@@ -242,21 +242,21 @@ export default function Dashboard() {
                 className="flex items-center w-full justify-start bg-primary/10 text-primary hover:bg-primary/20 px-3 py-2 rounded-md text-sm font-medium"
               >
                 <Home className="w-4 h-4 mr-3" />
-                Übersicht
+                Overview
               </Link>
               <Link
                 href="/workflows"
                 className="flex items-center w-full justify-start text-muted-foreground hover:bg-muted px-3 py-2 rounded-md text-sm font-medium"
               >
                 <Workflow className="w-4 h-4 mr-3" />
-                Agent
+                Workflows
               </Link>
               <Link
                 href="/analytics"
                 className="flex items-center w-full justify-start text-muted-foreground hover:bg-muted px-3 py-2 rounded-md text-sm font-medium"
               >
                 <BarChart3 className="w-4 h-4 mr-3" />
-                Logs
+                Analytics
               </Link>
               <Link
                 href="/templates"
