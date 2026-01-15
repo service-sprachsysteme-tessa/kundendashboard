@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { supabase } from "@/lib/supabase"
+import { createClient } from "@/utils/supabase/client"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -24,6 +24,8 @@ export default function LoginPage() {
     e.preventDefault()
     setIsLoading(true)
     setError(null)
+
+    const supabase = createClient()
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -54,7 +56,7 @@ export default function LoginPage() {
         <Card className="border-border">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">Willkommen</CardTitle>
-            <CardDescription>Melden Sie sich an, um auf Ihre Daten zuzugreifen                  </CardDescription>
+            <CardDescription>Melden Sie sich an, um auf Ihre Daten zuzugreifen</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
@@ -77,7 +79,7 @@ export default function LoginPage() {
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Password</Label>
                   <Link href="/forgot-password" className="text-sm text-primary hover:underline">
-                    Passwort vergessen? 
+                    Passwort vergessen?
                   </Link>
                 </div>
                 <div className="relative">
@@ -119,8 +121,6 @@ export default function LoginPage() {
                 )}
               </Button>
             </form>
-
-            
           </CardContent>
         </Card>
 
