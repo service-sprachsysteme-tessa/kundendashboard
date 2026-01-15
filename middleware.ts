@@ -1,0 +1,58 @@
+import { NextResponse, type NextRequest } from "next/server";
+import { createServerClient } from "@supabase/ssr";
+
+export async function middleware(request: NextRequest) {
+  const response = NextResponse.next();
+
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll();
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            response.cookies.set(name, value, options);
+          });
+        },
+      },
+    }
+  );
+
+  const { data } = await supabase.auth.getUser();
+  const user = data.user;
+
+  const pathname = request.nextUrl.pathname;
+
+  // Alles unter /(app) schützen:
+  const isAppRoute =
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/calls") ||
+    pathname.startsWith("/settings") ||
+    pathname.startsWith("/app"); // falls du /app verwendest
+
+  // Auth-Routen:
+  const isAuthRoute = pathname.startsWith("/auth");
+
+  if (isAppRoute && !user) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/login";
+    url.searchParams.set("next", pathname);
+    return NextResponse.redirect(url);
+  }
+
+  // Optional: wenn eingeloggt und auf /auth/login -> direkt dashboard
+  if (isAuthRoute && user && pathname === "/auth/login") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/dashboard";
+    return NextResponse.redirect(url);
+  }
+
+  return response;
+}
+
+export const config = {
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+};
