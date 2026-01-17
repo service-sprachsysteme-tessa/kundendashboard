@@ -1,20 +1,18 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
-export async function middleware(request: NextRequest) {
-  const response = NextResponse.next();
+export async function middleware(req: NextRequest) {
+  const res = NextResponse.next();
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll() {
-          return request.cookies.getAll();
-        },
-        setAll(cookiesToSet) {
+        getAll: () => req.cookies.getAll(),
+        setAll: (cookiesToSet) => {
           cookiesToSet.forEach(({ name, value, options }) => {
-            response.cookies.set(name, value, options);
+            res.cookies.set(name, value, options);
           });
         },
       },
@@ -24,35 +22,34 @@ export async function middleware(request: NextRequest) {
   const { data } = await supabase.auth.getUser();
   const user = data.user;
 
-  const pathname = request.nextUrl.pathname;
+  const path = req.nextUrl.pathname;
 
-  // Alles unter /(app) schützen:
-  const isAppRoute =
-    pathname.startsWith("/dashboard") ||
-    pathname.startsWith("/calls") ||
-    pathname.startsWith("/settings") ||
-    pathname.startsWith("/app"); // falls du /app verwendest
-
-  // Auth-Routen:
-  const isAuthRoute = pathname.startsWith("/auth");
-
-  if (isAppRoute && !user) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/auth/login";
-    url.searchParams.set("next", pathname);
+  // Root immer auf /login
+  if (path === "/") {
+    const url = req.nextUrl.clone();
+    url.pathname = "/login";
     return NextResponse.redirect(url);
   }
 
-  // Optional: wenn eingeloggt und auf /auth/login -> direkt dashboard
-  if (isAuthRoute && user && pathname === "/auth/login") {
-    const url = request.nextUrl.clone();
+  // Dashboard schützen
+  if (path.startsWith("/dashboard")) {
+    if (!user) {
+      const url = req.nextUrl.clone();
+      url.pathname = "/login";
+      return NextResponse.redirect(url);
+    }
+  }
+
+  // Optional: wenn eingeloggt und auf /login -> /dashboard
+  if (path === "/login" && user) {
+    const url = req.nextUrl.clone();
     url.pathname = "/dashboard";
     return NextResponse.redirect(url);
   }
 
-  return response;
+  return res;
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/", "/login", "/dashboard/:path*"],
 };
